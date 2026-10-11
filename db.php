@@ -1,11 +1,6 @@
 
 <?php
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "assignment_system";
-
-$conn = mysqli_connect($host, $username, $password, $database);
+$conn = mysqli_connect("localhost", "root", "", "assignment_system");
 
 if (!$conn) {
     die("Database connection failed: " . mysqli_connect_error());
