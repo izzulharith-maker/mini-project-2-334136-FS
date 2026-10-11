@@ -4,7 +4,7 @@ require_once 'db.php';
 $message = "";
 
 $categories = $conn->query(
-    "SELECT category_id, category_name FROM categories ORDER BY category_name"
+    "SELECT id, category_name FROM categories"
 );
 
 if (isset($_POST['create_assignment'])) {
@@ -80,7 +80,7 @@ if (isset($_POST['create_assignment'])) {
 
             <?php if ($categories): ?>
                 <?php while ($category = $categories->fetch_assoc()): ?>
-                    <option value="<?= (int) $category['category_id'] ?>">
+                    <option value="<?= (int) $category['id'] ?>">
                         <?= htmlspecialchars($category['category_name']) ?>
                     </option>
                 <?php endwhile; ?>

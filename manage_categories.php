@@ -28,7 +28,7 @@ if (isset($_GET['delete'])) {
     $id = (int) $_GET['delete'];
 
     $stmt = $conn->prepare(
-        "DELETE FROM categories WHERE category_id = ?"
+        "DELETE FROM categories WHERE id = ?"
     );
     $stmt->bind_param("i", $id);
     $stmt->execute();
@@ -39,7 +39,7 @@ if (isset($_GET['delete'])) {
 }
 
 $result = $conn->query(
-    "SELECT * FROM categories ORDER BY category_id DESC"
+    "SELECT * FROM categories ORDER BY id DESC"
 );
 ?>
 
@@ -96,10 +96,10 @@ $result = $conn->query(
         <?php if ($result && $result->num_rows > 0): ?>
             <?php while ($row = $result->fetch_assoc()): ?>
                 <tr>
-                    <td><?= (int) $row['category_id'] ?></td>
+                    <td><?= (int) $row['id'] ?></td>
                     <td><?= htmlspecialchars($row['category_name']) ?></td>
                     <td>
-                        <a href="?delete=<?= (int) $row['category_id'] ?>"
+                        <a href="?delete=<?= (int) $row['id'] ?>"
                            class="btn btn-danger btn-sm"
                            onclick="return confirm('Delete this category?')">
                             Delete
